@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{REQUEST_URI} ^application.*
+RewriteRule ^(.*)$ http://dev.idaciti.com/dataexplorer/index.php?/$1 [L]
+
+RewriteCond %{REQUEST_URI} ^system.*
+RewriteRule ^(.*)$ http://dev.idaciti.com/dataexplorer/index.php?/$1 [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ http://dev.idaciti.com/dataexplorer/index.php?/$1 [L]
+</IfModule>
