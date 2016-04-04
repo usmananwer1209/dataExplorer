@@ -32,8 +32,9 @@ class Exportdata extends abstract_controller {
             $list_companies = $this->company->get_companies();
             $data['getcompanieslist'] = $list_companies;
             
-          $data['get_sector'] = $this->company->getCompanySectors(); //$this->db->group_by("sector")->get('company')->result();
-            
+             $data['get_sector'] = $this->company->getCompanySectors("sector"); 
+            $data['get_industry'] = $this->company->getCompanySectors("industry"); 
+            $data['get_sic'] = $this->company->getCompanySectors("sic"); 
             $list_kpis = $this->kpis->get_kpis();
             $data['list_kpis'] = $list_kpis;
 			
