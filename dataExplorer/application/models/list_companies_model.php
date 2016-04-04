@@ -66,8 +66,13 @@ class List_companies_model extends Abstract_model {
      * 
      */
 
-    function getCompanySectors() {
-        return $get_sector = $this->db->group_by("sector")->get('company')->result();
+    function getCompanySectors($group_by="") {
+
+        if($group_by!=""){
+        return $get_sector = $this->db->group_by($group_by)->get('company')->result();
+    }else {
+         return $get_sector = $this->db->get('company')->result();
+    }
     }
 
 }
