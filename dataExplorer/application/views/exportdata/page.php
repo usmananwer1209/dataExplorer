@@ -80,8 +80,8 @@ require_once $folder . "/commun/navbar.php";
                                                                                                         ListOfDropdown('company', 'ListOfDropdown', 1)">
                                                 <option value="">All</option>
                                                 <?php
-                                                $get_sector = $this->db->group_by("industry")->get('company')->result();
-                                                foreach ($get_sector as $sector) {
+                                              
+                                                foreach ($get_industry as $sector) {
                                                     ?>
                                                     <option value="<?= $sector->industry ?>"><?= $sector->industry ?></option>
                                                     <?php
@@ -97,8 +97,8 @@ require_once $folder . "/commun/navbar.php";
                                                                                                         ListOfDropdown('company', 'ListOfDropdown', 1)">
                                                 <option value="">All</option>
                                                 <?php
-                                                $get_sector = $this->db->group_by("sic")->get('company')->result();
-                                                foreach ($get_sector as $sector) {
+                                             
+                                                foreach ($get_sic as $sector) {
                                                     ?>
                                                     <option value="<?= $sector->sic ?>"><?= $sector->sic ?></option>
                                                     <?php
