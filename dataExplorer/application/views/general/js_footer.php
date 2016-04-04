@@ -121,9 +121,10 @@ if(@$check != 'add')
 	<script src="<?php echo js_url('datatable_script')."?v=".$this->config->item('plugins_version'); ?>"></script>
 	<script src="<?php echo js_url('rys/explore_rank')."?v=".$this->config->item('files_version'); ?>"></script>
 	<script src="<?php echo js_url('rys/map')."?v=".$this->config->item('files_version'); ?>"></script>
-	<script src="<?php echo js_url('rys/treemap')."?v=".$this->config->item('files_version'); ?>"></script>
+	<!--<script src="<?php echo js_url('rys/treemap')."?v=".$this->config->item('files_version'); ?>"></script>-->
 	<script src="<?php echo js_url('rys/chart')."?v=".$this->config->item('files_version'); ?>"></script>
 	<script src="<?php echo js_url('rys/list_builder')."?v=".$this->config->item('files_version'); ?>"></script>
+
 
     <!-- drilldown requirements-->
     <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>-->
@@ -131,6 +132,11 @@ if(@$check != 'add')
     <!--<script src="http://d3js.org/d3.v3.min.js"></script>-->
     <script src="<?php echo js_url('rys/d3.v3.min')."?v=".$this->config->item('files_version'); ?>"></script>
     <script src="<?php echo js_url('drilldown')."?v=".$this->config->item('files_version'); ?>"></script>
+    <script src="<?php echo js_url("exportdata_js")?>"></script> 
+    
+    
+    
+    
 <?php } ?>
 <?php if( active_js('template',$current) ) { ?>
 	<script src="<?php echo js_lib('jquery-ui-1.10.4.custom.min','jquery-ui')."?v=".$this->config->item('plugins_version'); ?>"></script>

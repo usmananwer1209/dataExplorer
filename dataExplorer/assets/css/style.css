@@ -2392,7 +2392,7 @@ font-family: 'Open Sans';
 .page-content .content{
 	padding-left: 26px;
 	padding-right: 26px;
-	padding-top:83px;
+	padding-top:86px;
 }
 
 a.icon:hover {
@@ -5272,7 +5272,7 @@ code:hover{
 .nav-tabs > li > a{
 	border-radius:0;
 	border:0px;
-	padding:15px 20px;
+	padding:8px 20px;
 	color:#8e9aa2;
 	min-width:70px;
 		
@@ -5400,7 +5400,7 @@ border-bottom-right-radius: 3px;
 }
 
 .tab-content > .active, .pill-content > .active{	
-	padding: 19px;
+	padding: 7px 19px;
 }
 
 .tabs-left>.nav-tabs {
@@ -8720,10 +8720,40 @@ label.css-label {
 #KPIname_container li:hover{ background-color:#B3D31A; color:#FFF; cursor:default;}
 
 .table-responsive.dataexport_table{ overflow-x: scroll; overflow-y: scroll; height:450px; }
+#kpi .blue-custom-multi-select select{min-height:328px !important}
+#kpi .blue-custom-row-1{min-height:328px !important}
+#companies .blue-custom-multi-select select{min-height:328px !important}
+#companies .blue-custom-row-1{min-height:328px !important}
 
 
+#kpi_list_builder .blue-custom-row-1{min-height:227px !important}
+#kpi_list_builder .blue-custom-multi-select select{min-height:227px  !important}
+#company_list_builder .blue-custom-row-1{min-height:227px !important}
+#company_list_builder .blue-custom-multi-select select{min-height:227px  !important}
+#company_list_builder .blue-custom-row{min-height:227px  !important}
 
+.add-cards-form .add_company select[multiple], .add-cards-form .add_kpi select[multiple] {
+    height: 75px !important;
+    min-height:70px !important;
+    width: 86%;
+}
+.custom-row-black{margin-top:0px !important}
+#export .custom-form-control-blue{padding: 2px 0 !important;}
+.cutom-green-btn {
+    
+    padding: 13px 27px !important;
+}
 
+@media (min-width: 980px) {
+.page-content {
+    margin-left: 250px;
+    min-height: 500px !important;
+}
+.row.card_form_core .grid.simple{
+    margin-bottom:0px !important; 
+}
+
+}
 
 
 

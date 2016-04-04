@@ -1081,6 +1081,7 @@ class Card extends abstract_controller {
             $obj = array();
             $name = $this->input->post('name');
             $objs = $this->input->post('objs');
+            print_r($objs);
             $public = $this->input->post('public');
             $obj['user'] = $this->user_id();
             if ($id != "")
@@ -1092,6 +1093,7 @@ class Card extends abstract_controller {
             if (!empty($public))
                 $obj['public'] = $public;
             if(!empty($name) && !empty($obj['companies'])) {
+               
               $obj = $this->list_companies->save($obj);
               echo $obj->id;
             }
@@ -1363,4 +1365,221 @@ class Card extends abstract_controller {
 
         echo json_encode($this->dimensions_model->get_drilldown($post_data['entityId'], $post_data['termId'], $post_data['year'], 0, $post_data['fiscal_type']));
     }
+    
+    public function getcompanylist(){
+	$results='';
+	$table = $this->input->post('table');
+	$slcdvalueId='';
+	$selectedValue='';
+	if($table=='company'){
+		$order_group  = 'sic';
+		$Id		   = 'entity_id';
+		$name 		 = 'company_name';
+		$idValue	  = 'chkcomp';
+		$SelectedList ='SelectedComp';
+		
+		//if(isset($this->input->post('chkdvalue')) && $this->input->post('chkdvalue')<>""){
+		if($this->input->post('chkdvalue')<>""){
+			$chkdvalue = $this->input->post('chkdvalue');
+			$this->db->where_in('revenues_tier', $chkdvalue);	
+		}
+	
+		if( $this->input->post('sic')=='' and $this->input->post('filter')){
+			$filter=$this->input->post('filter');
+			if($filter[0]!="" & $filter[1]!="" & $filter[2]!=""){
+				//If sector, inductry and sic are not null
+				$this->db->like('sector',$filter[0]);
+				$this->db->like('industry',$filter[1]);
+				$this->db->like('sic',$filter[2]);
+			}elseif($filter[0]=="" & $filter[1]=="" & $filter[2]!=""){
+				//if only sic is not null
+				$this->db->like('sic',$filter[2]);
+			}elseif($filter[0]=="" & $filter[1]!="" & $filter[2]!=""){
+				//if sector null and industry and sic not null
+				$this->db->like('industry',$filter[1]);
+				$this->db->like('sic',$filter[2]);
+			}elseif($filter[0]=="" & $filter[1]!="" & $filter[2]==""){
+				//If sector & sic null and industry not null
+				$this->db->like('industry',$filter[1]);
+			}elseif($filter[0]!="" & $filter[1]!="" & $filter[2]==""){
+				//if sector and industry not null and sic is null
+				$this->db->like('sector',$filter[0]);
+				$this->db->like('industry',$filter[1]);
+			}elseif($filter[0]!="" & $filter[1]=="" & $filter[2]!=""){
+				//if industry null and sector and sic not null
+				$this->db->like('sector',$filter[0]);
+				$this->db->like('sic',$filter[2]);
+			}elseif($filter[0]!="" & $filter[1]=="" & $filter[2]==""){
+				//if sector not null and industry and sic null
+				$this->db->like('sector',$filter[0]);
+			}elseif($filter[0]=="" & $filter[1]=="" & $filter[2]==""){
+				//if all are null
+				echo " ";
+				exit;
+			}
+			//$this->db->like('sic',$filter[2]);
+		}elseif($this->input->post('sic') and empty($filter) ){
+			$this->db->like('sic',$this->input->post('sic'));
+		}elseif($this->input->post('sic') and !empty($filter)){
+			$filter=$this->input->post('filter');
+			$this->db->like('sector',$filter[0]);
+			$this->db->like('industry',$filter[1]);
+		}
+			
+	}else if($table=='kpi'){
+		$order_group=$this->input->post('rdGroup');
+		$Id='term_id';
+		$name='name';
+		$idValue='chkkpi';
+		$SelectedList='SelectedKpi';
+		if($order_group=="flat_list"){
+			$order_group="";
+
+		}
+	}
+	if($order_group=="" & $table=='kpi' ){
+		$get_outer = $this->db->order_by("name", "asc")->get($table)->result();
+	}else{
+		$get_outer = $this->db->group_by($order_group)->order_by($order_group, "asc")->get($table)->result();
+	}	
+	//echo $this->db->last_query();
+	
+	if(count($get_outer) < 1){
+		echo "No Result(s) found.";
+		exit;
+	}
+	$index=0;
+	foreach ($get_outer as $outer) 
+	{
+	if(isset($chkdvalue) && $chkdvalue<>""){
+		$this->db->where_in('revenues_tier', $chkdvalue);}
+	 if(isset($filter) and $filter<>'' and $table=='kpi'){
+		if(isset($filter[0]))$this->db->like('name',$filter[0]);
+	}
+	if($order_group!="" and ($table=='kpi' or $table=='company')  ){
+		$get_inner = $this->db->like($order_group,$outer->$order_group)->order_by($name, "asc")->get($table)->result();
+		$checked='';
+		$collaps='collapsed';
+		$collapsinner='';
+		$fa_em_icon_class='fa-plus';
+		$isactive=' ';
+	
+	
+	foreach ($get_inner as $inner) 
+	{
+		if(isset($selectedValue) and $selectedValue==$inner->$name){ 
+			$checked='checked';
+			$collapsouter='';
+			$collapsinner='in';
+			$fa_em_icon_class='fa-minus';
+			$isactive=' active';
+		}
+	}
+	
+        
+       $results.='<li class="row-fluid first_lvl">
+                                <div class="tree_element checkbox check-danger">
+                                  <a href="#" class="expand"><i class="fa fa-plus-square"></i></a>
+                                  <input id="cat_'.$index.'" type="checkbox" class="cat_checkbox" value="'.$outer->$order_group.'" ">
+                                  <label for="cat_'.$index.'">'.$outer->$order_group.'</label>
+                                </div><ul class="sec_lvl collapsed">';
+       
+     
+	$index_inner=0;
+	foreach ($get_inner as $inner) 
+	{
+		$checked='';
+		$fa_em_icon_class='fa-plus';
+		$isactive=' ';
+		if($selectedValue==$inner->$name){ 
+			$checked='checked';
+			$collapsouter='';
+			$collapsinner='in';
+			$fa_em_icon_class='fa-minus';
+			$isactive=' active';
+		//}
+		//if($selectedValue==$inner->$name){ $checked='checked';
+			$slcdvalueId = $idValue."_".$index."_".$index_inner; 
+		}
+	
+                $results .='<li class="row-fluid">
+                                          <div class="tree_element checkbox check-default kpi">
+                                            <input id="kpi_'.$inner->$Id.'" type="checkbox" class="kpi_checkbox" value="'.$inner->$Id.'" data-desc="'.$inner->$name.'">
+                                            <label for="kpi_'.$inner->$Id.'">'.$inner->$name.'</label>
+                                          </div>
+                                        </li>';
+		
+	$index_inner++;
+	} 
+        $results .='</ul></li>';
+	$index++;
+	 }else{
+		 //Flat List Data goes here
+		// $get_inner = $this->db->like($order_group,$outer->$order_group)->order_by($name, "asc")->get($table)->result();
+			$checked='';
+		$collaps='collapsed';
+	$collapsinner='';
+	//echo "<pre>";
+	//print_r($outer);
+	/*$results.='<div id="accordion-first" class="clearfix">
+	<div class="accordion" id="accordion2">
+	<div class="accordion-group">
+	<div class="accordion-heading">
+	<a class="accordion-toggle '.$collaps.'" id="#accordion'.$idValue.$index.'" data-toggle="collapse" data-parent="#accordion'.$idValue.$index.'" href="#collapse'.$idValue.$index.'">
+	<em class="icon-fixed-width fa fa-plus"></em>
+	</a>
+	<div class="checkbox-inline check-warning blue-custom-padd-1">
+	<input onchange="selectBox(this.id,\''.$SelectedList.'\');" '.$checked.' type="checkbox" id="'.$idValue.'_'.$index.'">
+	<label for="'.$idValue.'_'.$index.'">'.$outer->$order_group.'</label>
+	</div></div>
+	<div id="collapse'.$idValue.$index.'" class="accordion-body collapse '.$collapsinner.'">
+	<div class="col-md-12">
+	<div class="accordion-inner accordion-custom-padd" id="ListOfDropdown">';
+	*/
+	
+		$checked='';
+		if($selectedValue==$outer->$name){ 
+			$checked='checked';
+			$collapsouter='';
+			$collapsinner='in';
+			
+		//}
+		//if($selectedValue==$inner->$name){ $checked='checked';
+			//$slcdvalueId = $idValue."_".$index."_".$index_inner; 
+		}
+	
+		$results.='<div class="form-group blue-form-group-1">
+			<div class="checkbox-inline">
+				<input onchange="selectedboxflat(this.id);" '.$checked.' type="checkbox" id="'.$idValue.'_'.$index.'" value="'.$outer->term_id.'">
+	<label for="'.$idValue.'_'.$index.'" id="lbl'.$idValue.'_'.$index.'">'.$outer->name.'</label>
+			</div>
+		</div>';
+
+	$index++;
+	//$results.='</div></div></div></div>;
+	$results.='<!-- Dont Remove this Div Plzzzzz --><div style="display:block;"></div></div></div>';
+		 
+	 }
+	//echo '#@#'.$slcdvalueId;
+		
+	}
+		
+		echo $results;
+		//$this->load->view('exportdata/exportdata_w',$data);
+	}
+	
+	
+	public function getrange(){
+			
+		$query_min = $this->db->limit(1)->order_by('reporting_period',"asc")->get('reporting_periods')->result();
+		foreach($query_min as $min);
+		$query_max = $this->db->limit(1)->order_by('reporting_period',"desc")->get('reporting_periods')->result();
+		foreach($query_max as $max);
+		
+		echo substr($min->reporting_period,0,4).";".substr($max->reporting_period,0,4);
+
+		//$this->load->view('exportdata/exportdata_w',$data);
+		
+	}
+
 }

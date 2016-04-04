@@ -20,24 +20,24 @@ if (defined('ENVIRONMENT'))
 {
     switch (ENVIRONMENT)
     {
-        case 'eric-development':
-            $config['base_url']	= "http://localhost/idaciti/";
+         case 'eric-development':
+            $config['base_url']	= "http://192.168.1.201/projects/idaciti/";
             break;
 
         case 'usman-development':
-            $config['base_url']	= "http://dev.idaciti.com/dataexplorer/";
+            $config['base_url'] = "http://192.168.1.201/projects/idaciti/";
             break;
 
         case 'usman-testing':
-            $config['base_url']	= "http://localhost/idaciti/";
+            $config['base_url'] = "http://192.168.1.201/projects/idaciti/";
             break;
 
         case 'testing':
-            $config['base_url']	= "http://localhost/idaciti/";
+            $config['base_url'] = "http://192.168.1.201/projects/idaciti/";
             break;
 
         case 'production':
-            $config['base_url']	= "http://localhost/idaciti/";
+            $config['base_url'] = "http://192.168.1.201/projects/idaciti/";
             break;
 
         default:

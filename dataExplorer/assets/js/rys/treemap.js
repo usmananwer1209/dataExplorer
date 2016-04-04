@@ -3,6 +3,7 @@
 // so explicitly get v2 for the treemap implementation
 var zoom_in = true;
 
+ 
 $(document).ready(function() {
         var chart_selector2 = "#treemap";
 		var sector_name = $('#sectors_name').val();

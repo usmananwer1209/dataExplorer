@@ -18,6 +18,8 @@ $(document).ready(function() {
             [6, 45],
             [7, 50],
 ];
+
+ 
 	var plot = $.plotAnimator($("#placeholder"), [
 			{  	label: "Label 1",
 				data: d2, 	

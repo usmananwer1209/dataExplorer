@@ -4,7 +4,7 @@ var topvaldefault = 30;
 //Get Data of lists With Company name
 function ListAsComp() {
     var CompName = $('#company_name').val();
-    $.post('exportdata_c', {'Work': 'ListAsComp', 'tbl': 'company', 'CompName': CompName},
+    $.post('exportdata/get_term_results', {'Work': 'ListAsComp', 'tbl': 'company', 'CompName': CompName},
     function (data)
     {
         var lists = data.split("#@#");
@@ -27,7 +27,7 @@ function selectlist(Work) {
     else if (Work == 'SICList') {
         var atbValue = $('#sicList').val();
     }
-    $.post('exportdata_c/' + Work, {'Work': Work, 'tbl': 'company', 'atbValue': atbValue},
+    $.post('exportdata/' + Work, {'Work': Work, 'tbl': 'company', 'atbValue': atbValue},
     function (data)
     {
         var lists = data.split("#@#");
@@ -111,7 +111,7 @@ function ListOfDropdown(table, divid, clickaction) {
                 });
 
 
-                $.post('exportdata_c/getcompanylist', {'Work': 'ListOfDropdown', 'table': table, 'chkdvalue': chkdvalue, 'filter': filter, 'entity': entity, 'sic': sic}, function (data) {
+                $.post('exportdata/getcompanylist', {'Work': 'ListOfDropdown', 'table': table, 'chkdvalue': chkdvalue, 'filter': filter, 'entity': entity, 'sic': sic}, function (data) {
 
                     if (data != '') {
                         $("#" + divid).css("background", '');
@@ -192,7 +192,7 @@ function ListOfDropdownKpi(table, divid, rdGroup) {
             rdGroup = 'flat_list';
 
 
-        $.post('exportdata_c/getcompanylist', {'Work': 'ListOfDropdown', 'table': table, 'filter': filter, 'rdGroup': rdGroup}, function (data) {
+        $.post('exportdata/getcompanylist', {'Work': 'ListOfDropdown', 'table': table, 'filter': filter, 'rdGroup': rdGroup}, function (data) {
             if (data != '') {
                 $("#" + divid).css("background", '');
                 var arrData = data.split("#@#");
@@ -255,7 +255,7 @@ function SelectAllSelected() {
 function selectedboxflat(Id) {
 
     if ($("#" + Id).is(':checked')) {
-        $("#SelectedKpi").append("<option value=" + $("#" + Id).val() + " onclick='getDetail(" + $("#" + Id).val() + ");'>" + $("#lbl" + Id).text() + "</option>");
+        $("#SelectedKpi").append("<option  data-desc='fe' value=" + $("#" + Id).val() + " onclick='getDetail(" + $("#" + Id).val() + ");'>" + $("#lbl" + Id).text() + "</option>");
         var count = $("#" + 'CountKpi').text();
         $("#" + 'CountKpi').text(parseInt(count) + 1);
     } else {
@@ -294,12 +294,12 @@ function selectBox(Id, selectId) {
                 $("#" + Id + "_" + i).prop('checked', chkStatus);
                 if (selectId == 'SelectedKpi')
                 {
-                    $("#" + selectId).append("<option value=" + $("#" + Id + "_" + i).val() + " onclick='getDetail(" + $("#" + Id + "_" + i).val() + ");'>" + $("#lbl" + Id + "_" + i).text() + "</option>");
+                    $("#" + selectId).append("<option data-desc='fu' value=" + $("#" + Id + "_" + i).val() + " onclick='getDetail(" + $("#" + Id + "_" + i).val() + ");'>" + $("#lbl" + Id + "_" + i).text() + "</option>");
                     var count = $("#" + 'CountKpi').text();
                     $("#" + 'CountKpi').text(parseInt(count) + 1);
                 }
                 else {
-                    $("#" + selectId).append("<option value=" + $("#" + Id + "_" + i).val() + " >" + $("#lbl" + Id + "_" + i).text() + "</option>");
+                    $("#" + selectId).append("<option  data-desc='f' value=" + $("#" + Id + "_" + i).val() + " >" + $("#lbl" + Id + "_" + i).text() + "</option>");
                     var count = $("#CountComp").text();
                     $("#CountComp").text(parseInt(count) + 1);
                 }
@@ -329,12 +329,12 @@ function selectBox(Id, selectId) {
             $("#" + Id_p[0] + "_" + Id_p[1]).prop('checked', chkStatus);
             if (selectId == 'SelectedKpi')
             {
-                $("#" + selectId).append("<option  value=" + $("#" + Id).val() + " onclick='getDetail(" + $("#" + Id).val() + ");'>" + $("#lbl" + Id).text() + "</option>");
+                $("#" + selectId).append("<option data-desc='f' value=" + $("#" + Id).val() + " onclick='getDetail(" + $("#" + Id).val() + ");'>" + $("#lbl" + Id).text() + "</option>");
                 var count = $("#" + 'CountKpi').text();
                 $("#" + 'CountKpi').text(parseInt(count) + 1);
             }
             else {
-                $("#" + selectId).append("<option  value=" + $("#" + Id).val() + " >" + $("#lbl" + Id).text() + "</option>");
+                $("#" + selectId).append("<option data-desc='f' value=" + $("#" + Id).val() + " >" + $("#lbl" + Id).text() + "</option>");
                 var count = $("#" + 'CountComp').text();
                 $("#" + 'CountComp').text(parseInt(count) + 1);
             }
@@ -400,12 +400,13 @@ function selectLimts() {
 }
 //Get Detail of Selected KPI
 function getDetail(Id) {
-    $.post('exportdata_c/getdetails', {'Work': 'getDetail', 'tbl': 'kpi', 'Id': Id},
+    $.post('exportdata/getdetails', {'Work': 'getDetail', 'tbl': 'kpi', 'Id': Id},
     function (data)
     {
-        document.getElementById('getDetail').innerHTML = data;
+       document.getElementById('getDetail').innerHTML = data;
     });
 }
+
 //COnfirmation Modal
 function model_confirmation(selectId) {
     console.log(selectId);
@@ -461,7 +462,7 @@ function DataSave(selectId) {
     }
 
     values += '"';
-    $.post('exportdata_c/datasave', {'Work': 'DataSave', 'tbl': table, 'ListName': ListName, 'values': values, 'status': status},
+    $.post('exportdata/datasave', {'Work': 'DataSave', 'tbl': table, 'ListName': ListName, 'values': values, 'status': status},
     function (data)
     {
         //$("#"+msgid).addClass( "alert alert-success" );
@@ -490,7 +491,7 @@ function ShowList(selectId) {
     var selecttext = $("#" + selectId + " option:selected").text();
     selectId = $("#" + selectId).val();
     $("#" + listname).val(selecttext);
-    $.post('exportdata_c/showlist', {'Work': 'ShowList', 'tbl': table, 'selectId': selectId},
+    $.post('exportdata/showlist', {'Work': 'ShowList', 'tbl': table, 'selectId': selectId},
     function (data)
     {
         $("#" + listId).html(data);
@@ -535,7 +536,7 @@ function getTable() {
         $("#DataTable tbody").html(loadingdata);
         //$("#Dataloading").css("background", urlSrcTable);
     }
-    $.post('exportdata_c', {'Work': 'getTable', 'entities': CompListName, 'terms': KpiListName, 'periods': Range, 'Anual': Anual, 'Quarterly': Quarterly},
+    $.post('exportdata/get_term_results', {'Work': 'getTable', 'entities': CompListName, 'terms': KpiListName, 'periods': Range, 'Anual': Anual, 'Quarterly': Quarterly},
     function (data)
     {
         var total = 0;
@@ -604,7 +605,7 @@ function noformate(Num, len) {
 }
 // GetRange
 function range() {
-    $.post('exportdata_c/getrange', {'Work': 'range'},
+    $.post('exportdata/getrange', {'Work': 'range'},
     function (data)
     {
         var ArrVal = data.split(";");
@@ -699,7 +700,7 @@ function SelectCompKPI(id) {
 }
 // Change List of Exportdata
 function changeList(id, listname) {
-    $.post('exportdata_c/changelist', {'Work': 'changeList', 'id': id}, function (data)
+    $.post('exportdata/changelist', {'Work': 'changeList', 'id': id}, function (data)
     {
         $("#" + id).html(data);
         $("#" + id + " option").filter(function () {
@@ -711,7 +712,8 @@ function changeList(id, listname) {
 }
 //ajax autocomplete search
 $(function () {
-    $(document).on("keyup", "#company_name", function (d) {
+    $(document).on("keyup", ".autocomplete_comp, #company_name", function (d) {
+       
         var lidata = "";
         var value = $(this).val();
         var table = $(this).attr("data-table");
@@ -726,6 +728,7 @@ $(function () {
             });
             $("#company_name_container").show().html(lidata);
         });
+         d.preventDefault();
     });
     $(document).on("focusout", "#company_name", function (d) {
         $("#company_name_container").hide();

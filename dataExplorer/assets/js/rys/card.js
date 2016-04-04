@@ -209,7 +209,7 @@ $(window).on('load', function () {
 
     var currentDate = new Date();
     //console.log('load invoked for ' + card_data['id'] + ' at ' + currentDate.getHours() + ":" + currentDate.getMinutes() +":"+currentDate.getSeconds()+":"+currentDate.getMilliseconds());
-    log.debug('load invoked for ' + card_data['id'] + ' at ' + currentDate.getHours() + ":" + currentDate.getMinutes() +":"+currentDate.getSeconds()+":"+currentDate.getMilliseconds());
+//    log.debug('load invoked for ' + card_data['id'] + ' at ' + currentDate.getHours() + ":" + currentDate.getMinutes() +":"+currentDate.getSeconds()+":"+currentDate.getMilliseconds());
 
     $('#reporting_period_edit').show();
     if(card_data['type_chart'] == "explore" || card_data['type_chart'] == "rank" ){
@@ -863,11 +863,12 @@ $(document).ready(function() {
 	});
 	
     $(".save_list").click(function(){
-        
+   
         $('.name_container .error').remove();
         var target = $(this).attr('for');
         var parent = $(this).parent();
 		var kpi_title = $('#kpi_title').val();
+           
         if($.trim(parent.find('input[name="list_name"]').val()) && parent.find('select[name="'+target+'"] option').length )
         {
 			if(kpi_title == 'Template'){
@@ -893,6 +894,78 @@ $(document).ready(function() {
                 $('<span class="error">You need to add a name for your list</span>').prependTo($(this).prev().prev());
         }
     });
+    
+    $(".save_kpi_list").click(function(){
+   
+        $('.name_container .error').remove();
+        var target = $(this).attr('for');
+        var parent = $(this).parent();
+		var kpi_title = $('#kpi_title').val();
+        if($.trim($('#KpiListName.savelistname').val()) && $('#SelectedKpi option').length )
+        {
+           
+			if(kpi_title == 'Template'){
+				if($('#list_description').val()!=''){
+					save_list(this);
+					$('#delete_list_kpis').hide();
+					$('#delete_list_companies').hide();
+				}else{
+					$('<span class="error">You need to add a description for your template</span>').prependTo($(this).prev().prev());
+				}
+				
+			}else{
+				save_list(this);
+				$('#delete_list_kpis').hide();
+				$('#delete_list_companies').hide();
+			}
+        }
+        else
+        {
+            if($.trim(parent.find('input[name="list_name"]').val()))
+                $('<span class="error">You need to add an element to your list</span>').prependTo($(this).prev().prev());
+            else
+                $('<span class="error">You need to add a name for your list</span>').prependTo($(this).prev().prev());
+        }
+    });
+    
+     $(".save_company_list").click(function(){
+   
+        $('.name_container .error').remove();
+        var target = $(this).attr('for');
+        var parent = $(this).parent();
+		var kpi_title = $('#kpi_title').val();
+                  
+        if($.trim($('#CompanyListName.savelistname').val()) && $('#SelectedComp.selComp option').length )
+        {
+              console.log("loop");
+           
+			if(kpi_title == 'Template'){
+				if($('#list_description').val()!=''){
+					save_list(this);
+					$('#delete_list_kpis').hide();
+					$('#delete_list_companies').hide();
+				}else{
+					$('<span class="error">You need to add a description for your template</span>').prependTo($(this).prev().prev());
+				}
+				
+			}else{
+				save_list(this);
+				$('#delete_list_kpis').hide();
+				$('#delete_list_companies').hide();
+			}
+        }
+        else
+        {
+           
+            if($.trim(parent.find('input[name="list_name"]').val()))
+                $('<span class="error">You need to add an element to your list</span>').prependTo($(this).prev().prev());
+            else
+                $('<span class="error">You need to add a name for your list</span>').prependTo($(this).prev().prev());
+        }
+    });
+    
+    
+    
     $("#save_card").click(function(){
         //validation, we need to have companies and kpis
         var card_data = get_card_data(); 
@@ -1198,7 +1271,7 @@ $(".use_list").click(function(){
     $('.name_container .error').remove();
     var target = $(this).attr('for');
     var parent = $(this).parent().parent();
-    if(parent.find('select[name="'+target+'"] option').length )
+    if($('#SelectedKpi option').length)
     {
         use_list(this);
     }
@@ -1207,6 +1280,21 @@ $(".use_list").click(function(){
       $('<span class="error">You need to add an element to your list</span>').prependTo($(this).parent().prev().prev().prev());
     }
 });
+$(".use_kpi_list").click(function(){
+    
+    $('.name_container .error').remove();
+    var target = $(this).attr('for');
+    var parent = $(this).parent().parent();
+    if($('select[name="'+target+'"] option').length )
+    {
+        use_list(this);
+    }
+    else
+    {
+      $('<span class="error">You need to add an element to your list</span>').prependTo($(this).parent().prev().prev().prev());
+    }
+});
+
 
 function use_list(this_btn) {
   var this_obj = $(this_btn);
@@ -1222,15 +1310,23 @@ function use_list(this_btn) {
 }
 
 function save_list(this_btn) {
+
   var kpi_title = $('#kpi_title').val();
   var this_obj = $(this_btn);
   var _for   = $(this_obj).attr("for");
+  
   var _obj   = $(this_obj).attr("obj");
+  console.log(_for+"--"+_obj);
   if(kpi_title == 'Template'){
  	var _name  = $('#kpis_last_name[name="list_name"]').val();
   }else{
-	var _name  = $(this_obj).prev().prev().find('[name="list_name"]').val();
+      if(_obj=="companies") {
+      var _name  = $('#CompanyListName.savelistname').val();
+      }else{
+	var _name  = $('#KpiListName.savelistname').val();
+    }
   }
+
   var _description  = $('#list_description').val();
   if($('input#'+_obj+'_public_list').is(':checked'))
     var _public  = 1;
@@ -1274,6 +1370,7 @@ function save_list(this_btn) {
 		};
 		var ajax_url = site_url + 'card/save_list_'+_obj;
 	}
+        
     $.ajax({
       url :  ajax_url,
       type:"POST",

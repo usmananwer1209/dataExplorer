@@ -1,5 +1,6 @@
 
 // get the width & height from the div
+var unicodePunctuationRe;
     var w = 500,
         h = 400,
         fetcher, vis, fill, count, background,

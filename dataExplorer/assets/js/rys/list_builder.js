@@ -1,6 +1,17 @@
 $(document).ready(function() 
 {
     //display kpi descripton
+    
+    function getDetail2(Id) {
+    $.post('exportdata/getdetails', {'Work': 'getDetail', 'tbl': 'kpi', 'Id': Id},
+    function (data)
+    {
+       
+        document.getElementById('selector_kpi_description').innerHTML = data;
+    });
+}
+
+
     $('body').on('click', '.add_kpi select[name="kpis2"] option', function() {
         var id = $(this).attr('value');
 		//$('select[name="kpis2"] option:selected').removeAttr('selected');
@@ -9,8 +20,11 @@ $(document).ready(function()
         $('#builder_kpi_description').text(desc);
     });
     $('body').on('click', '.add_kpi select[name="kpis"] option', function() {
+  
         var desc = $(this).attr('data-desc');
-        $('#selector_kpi_description').text(desc);
+        var value = $(this).attr('value');
+        getDetail2(value);
+//        $('#selector_kpi_description').text(desc);
     });
 
     //uncheck all companies on load
@@ -471,4 +485,25 @@ function load_sic_companies_search(industry, company_name, sector_name, sic){
             $('#companies_tree').append('<span class="warning">try again!</span>');
         }
     });
+    
+    
+     $('#kpis_tree').on('click', 'input.cat_checkbox', function(){
+        //check/uncheck sic checkbox and children checkboxes, if collapsed => expand
+        if($(this).is(':checked'))
+        {
+            $(this).parent().next().find('input.kpi_checkbox').prop('checked', true);
+            expand($(this).prev(), $('#kpis_tree'));
+        }
+        else
+        {
+            $(this).parent().next().find('input.kpi_checkbox').prop('checked', false);
+        }
+        update_checkboxes($(this).parent().next(), true, 'kpi_checkbox', 'cat_checkbox');
+    });
+
+    $('#kpis_tree').on('click', 'input.kpi_checkbox', function(){
+        update_checkboxes($(this).parents('ul.sec_lvl'), true, 'kpi_checkbox', 'cat_checkbox');
+    });
+
 }
+

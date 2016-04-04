@@ -57,35 +57,40 @@ if (defined('ENVIRONMENT'))
 		case 'eric-development':
 			$db['default']['hostname'] = 'localhost';
 			$db['default']['username'] = 'root';
-			$db['default']['password'] = '';
+//			$db['default']['password'] = 'XaPPPU1@VV';
+                        $db['default']['password'] = 'moomi';
 			$db['default']['database'] = 'idaciti';
 			break;
 
 		case 'usman-development':
 			$db['default']['hostname'] = 'localhost';
-			$db['default']['username'] = 'mappingi_de';
-			$db['default']['password'] = '3b[;LQVvcme!';
-			$db['default']['database'] = 'mappingi_dataexplorer';
+			$db['default']['username'] = 'root';
+//			$db['default']['password'] = 'XaPPPU1@VV';
+                          $db['default']['password'] = 'moomi';
+			$db['default']['database'] = 'idaciti';
 			break;
 
 		case 'usman-testing':
 			$db['default']['hostname'] = 'localhost';
 			$db['default']['username'] = 'root';
-			$db['default']['password'] = '';
+//			$db['default']['password'] = 'XaPPPU1@VV';
+                          $db['default']['password'] = 'moomi';
 			$db['default']['database'] = 'idaciti';
 			break;
 
 		case 'testing':
 			$db['default']['hostname'] = 'localhost';
 			$db['default']['username'] = 'root';
-			$db['default']['password'] = '';
+//			$db['default']['password'] = 'XaPPPU1@VV';
+                          $db['default']['password'] = 'moomi';
 			$db['default']['database'] = 'idaciti';
 			break;
 
 		case 'production':
 			$db['default']['hostname'] = 'localhost';
 			$db['default']['username'] = 'root';
-			$db['default']['password'] = '';
+//			$db['default']['password'] = 'XaPPPU1@VV';
+                          $db['default']['password'] = 'moomi';
 			$db['default']['database'] = 'idaciti';
 			break;
 

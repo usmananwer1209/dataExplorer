@@ -42,4 +42,27 @@ class List_kpis_model extends Abstract_model{
 		$this->db->order_by('name', 'DESC');
 		return $this->db->get()->result();
 	}	
+        
+        /* Method : Get KPI s
+         * 
+         * 
+         * 
+         */
+        	public function get_kpis(){
+		
+ 		$kpis = array();
+ 		$user = $this->session->userdata('user');
+                $userid = $user->id;
+		$this->db->where('user', $userid);
+		$this->db->or_where('public', 1);
+		$this->db->order_by('name ASC');
+		$query = $this->db->get('list_kpis');
+		if ($query->num_rows() > 0){
+			foreach ($query->result() as $row)
+   			{
+				$kpis[]=($row);
+			}
+		}
+		return $kpis;
+	}
 }
