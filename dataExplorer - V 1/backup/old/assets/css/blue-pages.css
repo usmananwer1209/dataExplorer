@@ -1,0 +1,604 @@
+/*================================== Take Css That is Below From here ===================================================
+	======================================================================================*/
+	
+	/* ================= New Blue(Pages) Css ==================== */
+	
+	.row-ida-new-page {
+
+	}
+	
+	.custom-tab-content-new {
+		border:1px solid #000;
+		margin-top: 10px;
+	}
+	
+	.custom-nav-tabs-blue {
+		background: transparent none repeat scroll 0 0;
+		border: 0 none;
+		margin-top: 5px;
+	}
+	
+	.custom-nav-tabs-blue li {
+		background: #7f7f7f none repeat scroll 0 0;
+		margin-right: 10px;
+		text-align: center;
+		width: 19%;
+	}
+	
+	.custom-nav-tabs-blue li a {
+		box-shadow: none !important;
+		color: #e6e7e8 !important;	
+	}
+	
+	.custom-nav-tabs-blue li a i {
+		font-size:18px;
+	}
+	
+	.custom-nav-tabs-blue > li.active > a,
+	.custom-nav-tabs-blue > li.active > a:hover,
+	.custom-nav-tabs-blue > li.active > a:focus {
+		background:#4372c4 !important;
+	}
+	
+	.custom-nav-tabs-blue li.active i {
+		color:#93d04f !important;
+	}
+	
+	.custom-tab-content-new {
+		
+	}
+	
+	.custom-form-row-blue {
+		margin: 0;
+	}
+	
+	.custom-form-control-blue {
+		padding: 5px 0;
+	}
+	
+	.custom-form-control-blue label {
+		padding-top:5px;
+	}
+	
+	.custom-form-control-blue .custom-form-control {
+		
+	}
+	
+	.custom-form-control-blue select {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		-webkit-box-shadow:none;
+		-moz-box-shadow:none;
+		-o-box-shadow:none;
+		-ms-box-shadow:none;
+		box-shadow:none;
+		color:#999;
+		padding:5px 5px;
+		border: 1px solid #c8c6c5;
+		border-radius: 3px;
+	}
+	
+	.custom-form-control-blue .custom-form-control select::-ms-expand {
+		display: none;
+	}
+	
+	.custom-form-control-blue .custom-form-control {
+		background-image: url("http://192.168.1.200/projects/idacitiBeta/assets/img/Untitled-2.png") !important;
+		background-position: 98% 50% !important;
+		background-repeat: no-repeat !important;
+		overflow: hidden !important;
+	}
+	
+	.custom-radio-blue label {
+		padding-top:0px ;
+	}
+	
+	.custom-checkbox-blue label {
+		padding-top:0px ;
+	}
+	
+	.blue-custom-padd {
+		margin-top: 26px;
+	}
+	
+	.custom-checkbox-col {
+		float: left;
+		width: 90px;
+	}
+
+	.blue-custom-padd-1 {
+		padding-top: 7px;
+	}
+	
+	.accordion-custom-padd {
+		padding-left: 42px;
+	}
+	
+	.blue-form-group-1 {
+		margin-bottom:0px !important;
+	}
+	
+	.custom-btn-blue {
+		background:#4372C4 !important;
+		color:#fff !important;
+		border-radius:0px;
+	}
+	
+	.custom-btn-blue:focus, 
+	.custom-btn-blue:active {
+		background:#4372C4 !important;
+		color:#fff !important;
+		border-radius:0px;
+	}
+	
+	.blue-border {
+		border:1px solid #000;
+		padding: 0 10px;
+	}
+	
+	.blue-green-padd-1 {
+		margin:0px;
+	}
+	
+	.blue-right-hd-1 {
+		background: #3f3f3f none repeat scroll 0 0;
+		margin: 0;
+		color: #fff;
+		text-align: center;
+		font-size: 20px;
+		font-family: Arial,sans-serif;
+	}
+	
+	.blue-right-green-bg {
+		background: #93d04f none repeat scroll 0 0;
+		padding: 10px 0;
+	}
+	
+	.blue-right-green-bg {
+		
+	}
+	
+	.blue-right-green-bg .custom-control-label-blue {
+		color:#000 !important;
+		padding-top:5px;
+	}
+	
+	.blue-right-green-bg .blue-form-control {
+		background: transparent none repeat scroll 0 0;
+		border: 1px solid #849274;
+		color: #58575b !important;
+	}
+	
+	.blue-right-green-bg .blue-form-control:focus, 
+	.blue-right-green-bg .blue-form-control:active {
+		background: transparent none repeat scroll 0 0;
+		border: 1px solid #849274;
+		color: #58575b !important;
+	}
+
+	.blue-right-green-bg .blue-form-control::-moz-placeholder {
+		color: #58575b !important;
+	}
+	
+	.blue-right-green-bg .blue-form-control::-webkit-input-placeholder {
+		color: #58575b !important;
+	}
+	
+	.blue-right-green-bg .blue-form-control::-ms-input-placeholder {
+		color: #58575b !important;
+	}
+
+	
+	.blue-green-padd-2 {
+		
+	}
+	
+	.blue-custom-row {
+		background: #fff none repeat scroll 0 0;
+		margin: 10px 0;
+		min-height: 400px;
+	}
+	
+	.blue-custom-row-1 {
+		background: #fff none repeat scroll 0 0;
+		min-height: 400px;
+	}
+	
+	.blue-custom-padd {
+		margin: 10px 0;
+	}
+	
+	.blue-custom-multi-select select {
+		min-height: 400px;
+		width: 100%;
+		border: 0px;
+	}
+	
+	.blue-custom-multi-select select:focus, 
+	.blue-custom-multi-select select:active {
+		background:transparent !important;
+	}
+	
+	.blue-custom-multi-select select option {
+		color:#6b6e6e !important;
+		padding:2px 10px;
+	}
+	
+	.blue-form-group-1 {
+		
+	} 
+	
+	.blue-green-padd-3 {
+		margin-top: 50px;
+	}
+	
+	.blue-green-padd-3 label {
+		white-space: pre;
+	}
+	
+	.blue-custom-col-1 {
+		
+	}
+	
+	.custom-form-control-3 label {
+		padding-top:0px;
+	}
+	
+	.blue-custom-box-2 {
+		background: #bdd7ee none repeat scroll 0 0;
+		border-radius: 10px;
+		padding: 5px;
+	}
+	
+	
+	.custom-checkbox-export label {
+		color: #fff;
+		margin-bottom: 0;
+		padding-top: 0;
+	}
+	
+	.custom-checkbox-export {
+		background: #843c11 none repeat scroll 0 0;
+		margin-bottom: 10px;
+		padding: 5px 0;
+		text-align: center;
+	}
+	
+	.custom-checkbox-export label::before {
+		background-color: #843c11 !important;
+		border: 1px solid #c2c6cb !important;
+	}
+	
+	.custom-checkbox-export input[type="checkbox"]:checked + label {
+		color:#fff;
+	}
+	
+	.cutom-green-btn {
+		background: #93d04f none repeat scroll 0 0;
+		color: #fff;
+		display: block;
+		font-size: 20px;
+		margin-bottom: 10px;
+		padding: 20px;
+		text-align: center;
+		width: 100%;
+		cursor:pointer;
+	}
+	
+	.cutom-green-btn:hover {
+		color: #fff;
+	}
+	
+	.custom-row-black {
+		background: #000000 none repeat scroll 0 0;
+		margin: 10px 0;
+		padding: 10px 0;
+	}
+	
+	.custom-row-black p {
+		color: #bdbdbd;
+		font-size: 14px;
+		margin: 0;
+		padding-top: 6px;
+	}
+
+	.custom-row-black label {
+		padding-top: 6px;
+		color: #bdbdbd;
+		font-size: 14px;
+	}
+	
+	.custom-sm-navy {
+		background: #4372c4 none repeat scroll 0 0 !important;
+		border-radius: 0;
+		color: #fff !important;
+	}	
+	
+	.custom-row-black-1 .black-form-control {
+		
+	}
+	
+	
+	.custom-row-black-1 .black-form-control  {
+		background: transparent none repeat scroll 0 0;
+		border: 1px solid #777777;
+		color: #777777 !important;
+	}
+	
+	.custom-row-black-1 .black-form-control :focus, 
+	.custom-row-black-1 .black-form-control :active {
+		background: transparent none repeat scroll 0 0;
+		border: 1px solid #777777;
+		color: #777777 !important;
+	}
+
+	.custom-row-black-1 .black-form-control::-moz-placeholder {
+		color: #777777 !important;
+	}
+	
+	.custom-row-black-1 .black-form-control::-webkit-input-placeholder {
+		color: #777777 !important;
+	}
+	
+	.custom-row-black-1 .black-form-control::-ms-input-placeholder {
+		color: #777777 !important;
+	}
+	
+	.custom-pull-right-1 {
+		float:right;
+	}
+	
+	/*======= Accordian Css =======*/
+	
+	#accordion-first .accordion-group {
+		margin-bottom: 0px;
+	}
+
+	#accordion-first .accordion-heading, #accordion-first .accordion-toggle:hover, #accordion-first .accordion-heading .accordion-toggle.active {
+		background: none repeat scroll 0% 0% transparent;
+	}
+	#accordion-first .accordion-heading {
+		border-bottom: 0px none;
+		font-size: 16px;
+	}
+
+	#accordion-first .accordion-heading .accordion-toggle {
+		display: inline-block;
+		cursor: pointer;
+		padding: 5px 0px !important;
+		color: #222;
+		outline: medium none !important;
+		text-decoration: none;
+		background: transparent !important;
+	}
+
+	#accordion-first .accordion-heading .accordion-toggle.active em{background-color: #374454;}
+
+	#accordion-first .accordion-heading .accordion-toggle > em {
+		background-color: #1c5b92 !important;
+		border-radius: 5px;
+		color: #fff;
+		font-size: 10px;
+		height: 20px;
+		line-height: 21px;
+		margin-right: 10px;
+		text-align: center;
+		width: 20px;
+		
+	}
+
+	/*======= Accordian Css =======*/
+	
+	
+	/*======= Checkbox Inline Css =======*/
+	
+			
+	.checkbox-inline {
+		padding-left: 0;
+	}
+	
+	.checkbox-inline input[type=radio][disabled] + label:after {
+	  background-color: #eceff3;
+	}
+	
+	.checkbox-inline label {
+	  display: inline-block;
+	  cursor: pointer;
+	  position: relative;
+	  padding-left: 25px;
+	  margin-right: 15px;
+	  font-size: 13px;
+	  margin-bottom: 6px;
+	  color: #777a80;
+	  transition: border 0.2s linear 0s,color 0.2s linear 0s;
+	  margin-bottom: 10px;
+	  direction: ltr;
+	}
+	
+	.checkbox-inline label:before {
+	  content: "";
+	  display: inline-block;
+	  width: 17px;
+	  height: 17px;
+	  margin-right: 10px;
+	  position: absolute;
+	  left: 0px;
+	  top: 1.4px;
+	  background-color: #ffffff;
+	  border: 1px solid #c2c6cb;
+	  border-radius: 3px;
+	  transition: border 0.2s linear 0s,color 0.2s linear 0s;
+	}
+	
+	.checkbox-inline label::after {
+	  display: inline-block;
+	  width: 16px;
+	  height: 16px;
+	  position: absolute;
+	  left: 3.2px;
+	  top: 0px;
+	  font-size: 11px;
+	  transition: border 0.2s linear 0s,color 0.2s linear 0s;
+	}
+	
+	.checkbox-inline label:after {
+	  border-radius: 3px;
+	}
+	
+	.checkbox-inline input[type=checkbox] {
+	  display: none;
+	}
+	
+	.checkbox-inline.checkbox-circle label:after {
+	  border-radius: 99px;
+	}
+	
+	.checkbox-inline.checkbox-circle label:before {
+	  border-radius: 99px;
+	}
+	
+	.checkbox-inline input[type=checkbox]:checked + label {
+	  color: #4d5056;
+	}
+	
+	.checkbox-inline input[type=checkbox]:checked + label::after {
+	  font-family: 'FontAwesome';
+	  content: "\F00C";
+	}
+	
+	.checkbox-inline input[type=checkbox][disabled] + label {
+	  opacity: 0.65;
+	}
+	
+	.checkbox-inline input[type=checkbox][disabled] + label:before {
+	  background-color: #eceff3;
+	}
+	
+	.checkbox-inline.check-success input[type=checkbox]:checked + label:before {
+	  background-color: #0090d9;
+	  border: 1px solid #0090d9;
+	}
+	
+	.checkbox-inline.check-success input[type=checkbox]:checked + label::after {
+	  color: #ffffff;
+	}
+	
+	.checkbox-inline.check-primary input[type=checkbox]:checked + label:before {
+	  background-color: #0aa699;
+	  border: 1px solid #0aa699;
+	}
+	
+	.checkbox-inline.check-primary input[type=checkbox]:checked + label::after {
+	  color: #ffffff;
+	}
+	
+	.checkbox-inline.check-info input[type=checkbox]:checked + label:before {
+	  background-color: #4372C4;
+	  border: 1px solid #4372C4;
+	}
+	
+	.checkbox-inline.check-info input[type=checkbox]:checked + label::after {
+	  color: #ffffff;
+	}
+	
+	.checkbox-inline.check-warning input[type=checkbox]:checked + label:before {
+	  background-color: #fed203;
+		border: 1px solid #fed203;
+	}
+	
+	.checkbox-inline.check-warning input[type=checkbox]:checked + label::after {
+	  color: #ffffff;
+	}
+	
+	.checkbox-inline.check-danger input[type=checkbox]:checked + label:before {
+	  background-color: #f35958;
+	  border: 1px solid #f35958;
+	}
+	
+	.checkbox-inline.check-danger input[type=checkbox]:checked + label::after {
+	  color: #ffffff;
+	}
+	
+	/*======= Checkbox Inline Css =======*/
+	
+	
+	@media screen and (max-width:1500px) {
+		
+		.custom-row-black-1 {
+			width: 100%;
+		}
+		
+		.custom-navy-padd {
+			margin-top: 12px;
+		}
+		
+	}
+	
+	
+	@media screen and (max-width:1440px) {
+		
+		.blue-custom-col-1 {
+			width: 100%;
+		}
+		
+		.blue-green-padd-3 {
+			margin-top: 15px;
+		}
+		
+	}
+	
+	@media screen and (max-width:992px) {
+		
+		.blue-right-hd-1 {
+			margin-top:20px !important;
+		}
+		
+		.custom-btn-blue {
+			margin-top: 15px;
+		}
+		
+		.custom-nav-tabs-blue li a i {
+			display: block;
+			padding-bottom: 5px;
+		}
+		
+		.custom-nav-tabs-blue li {
+			width: 25%;
+		}
+		
+		.cutom-green-btn {
+			margin-top:10px;
+		}
+		
+		.custom-row-black label {
+			margin-top: 15px;
+		}
+		
+		.custom-sm-navy {
+			margin-top:15px;
+		}
+		
+		.custom-pull-right-1 {
+			float:left;
+		}
+			
+	}
+	
+	
+	@media screen and (max-width:767px) {
+		
+		
+		
+	}
+	
+	
+	@media screen and (max-width:400px) {
+		
+		.custom-checkbox-col {
+			float:none;
+		}
+		
+	}
+	
+	/* ================= New Blue(Pages) Css End ==================== */
