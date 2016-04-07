@@ -61,18 +61,61 @@ class List_companies_model extends Abstract_model {
         return $companies;
     }
 
+    public function is_name_exist($ListName) {
+        return $this->db->where('name', $ListName)->get('list_companies')->result();
+    }
+
+    public function update_list_company($values, $ListName) {
+        $this->db->set('companies', $values);
+        $this->db->where('name', $ListName);
+
+        $update_tbl = $this->db->update('list_companies');
+        if ($update_tbl)
+            return true;
+        else
+            return false;
+    }
+
+    public function insert_company_list($ins_array) {
+        $ins_tbl = $this->db->insert('list_companies', $ins_array);
+        if ($ins_tbl)
+            return 1;
+        else
+            return 0;
+    }
+
     /* Method : Get Sectors 
      * 
      * 
      */
 
-    function getCompanySectors($group_by="") {
+    function getCompanySectors($group_by = "") {
 
-        if($group_by!=""){
-        return $get_sector = $this->db->group_by($group_by)->get('company')->result();
-    }else {
-         return $get_sector = $this->db->get('company')->result();
+        if ($group_by != "") {
+            return $get_sector = $this->db->group_by($group_by)->get('company')->result();
+        } else {
+            return $get_sector = $this->db->get('company')->result();
+        }
     }
+
+    public function get_companies_list() {
+
+        $user = $this->session->userdata('user');
+       $userid = $user->id;
+        $this->db->where('user', $userid);
+        $this->db->or_where('public', 1);
+        $this->db->order_by('name ASC');
+        $query = $this->db->get('list_companies');
+
+        return $query->result();
+    }
+
+    function get_companies_with_order($order_by = "") {
+        if ($order_by != "") {
+            return $this->db->order_by("name")->get('list_companies')->result();
+        } else {
+            return $this->db->get('list_companies')->result();
+        }
     }
 
 }

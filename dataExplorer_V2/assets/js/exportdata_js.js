@@ -403,7 +403,7 @@ function getDetail(Id) {
     $.post('exportdata/getdetails', {'Work': 'getDetail', 'tbl': 'kpi', 'Id': Id},
     function (data)
     {
-       document.getElementById('getDetail').innerHTML = data;
+        document.getElementById('getDetail').innerHTML = data;
     });
 }
 
@@ -546,36 +546,39 @@ function getTable() {
         $("#hiddentable").html(lists[0]);
         $('#DataTable').DataTable({
             "ordering": false,
-            "info":false, 
-            "paging":true, 
+            "info": false,
+            "paging": true,
             "sInfo": "Data Preview ( _END_ of _TOTAL_ Records)",
             "searching": false,
             "pageLength": 100,
             "lengthMenu": [[100, -1], [100, "All"]],
-            "initComplete": function(settings, json){ 
-            var info = this.api().page.info();
-            total= info.recordsTotal;
-        }
+            "initComplete": function (settings, json) {
+                var info = this.api().page.info();
+                total = info.recordsTotal;
+            }
 
         });
         $("#DataTable_length").html("");
         $("#DataTable_paginate").html("")
         var table = $('#DataTable').DataTable();
 
-        var count_records = total; 
-        if(count_records <100){
+        var count_records = total;
+        if (count_records < 100) {
             $("#showrecords").html(count_records);
-        } else { 
-        $("#showrecords").html("100");}
-    
- 
+        } else {
+            $("#showrecords").html("100");
+        }
+
+
         $("#datatablecount").html(total);
     });
 }
 // CSV
 function getCSV() {
     var CSVName = $('#CSVName').val();
-    if(CSVName ==""){CSVName ="noname";}
+    if (CSVName == "") {
+        CSVName = "noname";
+    }
     var table = $('#hiddentable table').html();
     var data = table.replace(/,/g, '')
             .replace(/<thead>/g, '')
@@ -592,7 +595,7 @@ function getCSV() {
             .replace(/\n/g, '');
 
     var mylink = document.createElement('a');
-    mylink.download = CSVName+".csv";
+    mylink.download = CSVName + ".csv";
     mylink.href = "data:application/csv," + escape(data);
     mylink.click();
 }
@@ -713,7 +716,7 @@ function changeList(id, listname) {
 //ajax autocomplete search
 $(function () {
     $(document).on("keyup", ".autocomplete_comp, #company_name", function (d) {
-       
+
         var lidata = "";
         var value = $(this).val();
         var table = $(this).attr("data-table");
@@ -728,7 +731,7 @@ $(function () {
             });
             $("#company_name_container").show().html(lidata);
         });
-         d.preventDefault();
+        d.preventDefault();
     });
     $(document).on("focusout", "#company_name", function (d) {
         $("#company_name_container").hide();
@@ -808,3 +811,7 @@ $('body').on('click', '#delete_selected_kpis', function () {
     $("#getDetail").html("");
     return false;
 });
+
+
+
+	

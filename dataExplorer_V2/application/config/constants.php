@@ -41,19 +41,20 @@ define('PAGE_CONTET_COUNT',24);
 define('PRIVATE_COMPANY_INDICATOR','C');
 define('IDACITI_TOKEN', 'oepsy3b6');
 
+define('REST_API_URL','http://test-data.idaciti.com/api/');
 
-if (defined('ENVIRONMENT'))
-{
-    switch (ENVIRONMENT)
-    {
-        case 'production':
-            define('REST_API_URL','http://data.idaciti.com/api/');
-            break;
-
-        default:
-            define('REST_API_URL','http://data.idaciti.com:81/api/');
-    }
-}
+//if (defined('ENVIRONMENT'))
+//{
+//    switch (ENVIRONMENT)
+//    {
+//        case 'production':
+//            define('REST_API_URL','http://data.idaciti.com/api/');
+//            break;
+//
+//        default:
+//            define('REST_API_URL','http://data.idaciti.com:81/api/');
+//    }
+//}
 
 define('REST_API_TERM_RESULTS_BY_ENTITY_ID', REST_API_URL . 'termResult/json?token={0}&entities={1}&terms={2}&periods={3}');
 define('REST_API_TERM_RESULTS_DRILLDOWN', REST_API_URL . 'termResult/drilldown/json?token={0}&entities={1}&term={2}&period={3}');

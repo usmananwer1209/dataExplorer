@@ -23,5 +23,12 @@ class Reporting_periods_model extends Abstract_model {
                     $this->db->set($index, $value);
         }
     }
+    
+    public function get_min_period(){
+       return $this->db->limit(1)->order_by('reporting_period', "asc")->get('reporting_periods')->result();
+    }
+    public function get_max_period(){
+        return  $this->db->limit(1)->order_by('reporting_period', "desc")->get('reporting_periods')->result();
+    }
 
 }

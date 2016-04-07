@@ -237,5 +237,15 @@ class Api_model extends CI_Model {
         return $result;
 
     }
+    
+    public function get_termResultData($entities, $terms,  $periods){
+        
+        $search_arr = array('{0}', '{1}', '{2}', '{3}');
+            $replace_arr = array(IDACITI_TOKEN, $entities, $terms, $periods);
+            $api_url = str_replace($search_arr, $replace_arr, REST_API_TERM_RESULTS_BY_ENTITY_ID);
+            $newreults = file_get_contents($api_url);
+            $results= json_decode($newreults, true);
+            return $results;
+    }
 }
 
